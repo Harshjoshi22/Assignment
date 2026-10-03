@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+html, body { overflow-x: hidden; background: #efe9dd; color: #141414; font-family: "Helvetica Neue", Arial, sans-serif; }
+
+.hero { --car-w: clamp(150px, 40vw, 190px);
+    background:
+    radial-gradient(ellipse 70vw 50vh at 50% 50%, rgba(255, 255, 255, .05), transparent 70%),
+    linear-gradient(180deg, #242c42, #1d2436);}
+@media (min-width: 640px) { .hero { --car-w: clamp(200px, 28vw, 480px); } }
+
+.road { height: calc(var(--car-w) * 0.42); top: 50%; margin-top: calc(var(--car-w) * -0.21); }
+.road-bg { background: #141414; }
+.road-lines {
+  width: calc(100% + 720px);
+  background: repeating-linear-gradient(90deg, #f2c200 0 36px, transparent 36px 72px) center / 100% 3px no-repeat;
+}
+.car::before,
+.car::after {
+  content: "";
+  position: absolute;
+  left: 92%;
+  width: 65%;
+  height: 40%;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(255, 226, 122, .55), rgba(255, 226, 122, 0));
+  clip-path: polygon(0 35%, 100% 0, 100% 100%, 0 65%);
+}
+.car::before { top: 6%; }
+.car::after  { top: 54%; }
+.car { top: 50%; left: 3vw; width: var(--car-w); margin-top: calc(var(--car-w) * -0.21); z-index: 30; will-change: transform; }
+.headline {
+  font-weight: 900; text-transform: uppercase; line-height: 1; color: #ffd23f;
+  letter-spacing: 0.18em; font-size: 3.9vw; white-space: nowrap;
+}
+@media (max-width: 639px) { .headline { white-space: normal; letter-spacing: 0.1em; font-size: 6.5vw; } }
